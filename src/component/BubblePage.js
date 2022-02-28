@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./sortPage.css"
 // react-bootstrap components
 import {
   Badge,
@@ -15,7 +15,7 @@ import {
 
 function BubbleSort() {
   return (
-    <>
+    <><div class = "container">
       <div className="title">
         Bubble Sort &Theta;(n<sup>2</sup>)
       </div>
@@ -33,7 +33,7 @@ function BubbleSort() {
       </div>
       <div className="para">&nbsp;</div>
       <div className="para">Pseudo-code:</div>
-      <pre>
+      <pre className="code">
         {`
         procedure bubbleSort(A : list of sortable items)
         n := length(A)
@@ -66,6 +66,7 @@ function BubbleSort() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
           allowFullScreen
         ></iframe>
+      </div>
       </div>
     </>
   );

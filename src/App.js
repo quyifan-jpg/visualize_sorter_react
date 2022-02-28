@@ -16,7 +16,12 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/' exact element={<SortingVisalizer/>} />
+          <Route path='/' exact element={<SortingVisalizer/>} />          
+          <Route path='/BubbleSort' exact element={<BubbleSort/>} />
+          <Route path='/QuickSort' exact element={<QuickSort/>} />
+          <Route path='/SelectSort' exact element={<SelectionSort/>} />
+          <Route path='/MergeSort' exact element={<MergeSort/>} />
+
         </Routes>
       </Router>
     </div>

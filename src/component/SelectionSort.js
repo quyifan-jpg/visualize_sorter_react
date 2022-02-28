@@ -1,4 +1,5 @@
 import React from "react";
+import "./sortPage.css"
 
 // react-bootstrap components
 import {
@@ -14,7 +15,7 @@ import {
 
 function SelectionSort() {
   return (
-    <>
+    <><div className="container">
       <div className="title">
         Selection Sort &Theta;(n<sup>2</sup>)
       </div>
@@ -41,7 +42,7 @@ function SelectionSort() {
 
       <div className="para">&nbsp;</div>
       <div className="para"> Implementation in C:</div>
-      <pre>
+      <pre className="code">
         {`
         /* a[0] to a[aLength-1] is the array to sort */
         int i,j;
@@ -89,6 +90,7 @@ function SelectionSort() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
           allowFullScreen
         ></iframe>
+      </div>
       </div>
     </>
   );

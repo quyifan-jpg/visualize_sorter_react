@@ -1,4 +1,5 @@
 import React from "react";
+import "./sortPage.css"
 
 // react-bootstrap components
 import {
@@ -15,6 +16,7 @@ import {
 function QuickSort() {
   return (
     <>
+    <div class = "container">
       <div className="title">Quick Sort &Theta;(nlogn)&#8612;(Average)</div>
       <hr></hr>
       <div className="para">
@@ -31,7 +33,7 @@ function QuickSort() {
       </div>
       <div className="para">&nbsp;</div>
       <div className="para">Pseudo-code:</div>
-      <pre>
+      <pre className="code">
         {`
         algorithm quicksort(A, lo, hi) is
         if lo < hi then
@@ -66,6 +68,7 @@ function QuickSort() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
           allowFullScreen
         ></iframe>
+      </div>
       </div>
     </>
   );

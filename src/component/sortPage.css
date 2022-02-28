@@ -1,0 +1,9 @@
+.container{
+    float: left;
+    width: 70%;
+    margin-left: 300px;
+}
+.code{
+    text-align: left;
+    margin-left: 300px;
+}

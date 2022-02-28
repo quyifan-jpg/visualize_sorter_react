@@ -1,8 +1,9 @@
 import React from "react";
+import "./sortPage.css"
 
 function MergeSort() {
   return (
-    <>
+    <><div class = "container">
       <div className="title">Merge Sort &Theta;(nlogn)</div>
       <hr></hr>
       <div className="para">
@@ -21,7 +22,7 @@ function MergeSort() {
       </div>
       <div className="para">&nbsp;</div>
       <div className="para">Pseudo-code:</div>
-      <pre>
+      <pre className="code">
         {`
         function merge(left, right)
         var result := empty list
@@ -61,6 +62,7 @@ function MergeSort() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
           allowFullScreen
         ></iframe>
+      </div>
       </div>
     </>
   );

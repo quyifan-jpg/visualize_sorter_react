@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //for MERGE sort
 const ANIMATION_SPEED_MS = 0.5;
 //number of array bars being displayed
-const NUMBER_OF_ARRAY_BARS = 250; 
+const NUMBER_OF_ARRAY_BARS = 240; 
 //main color of the array bars:
 const PRIMARY_COLOR = 'turquoise';
 //the color of the array bar that is being compared throughout the sort
@@ -309,6 +309,7 @@ export default class SortingVisualizer extends React.Component {
         return (
 
           <div className="array-container">
+            <h className='title'>Visualize Soring algorithm</h>
             <div className='button'>
             <Button id="button1" onClick={() => this.resetArray()}>Generate New Array</Button>
             <Button id="button2" onClick={() => this.mergeSortImpl()}>Merge Sort</Button>

@@ -9,7 +9,7 @@ export function getMergeSortAnimations(array) {
 export function getBubbleSortAnimation(arr) {
   const animations = [];
   for (var i = 0; i < arr.length; i++) {
-    if (arr.length - i - 1 == 0) {
+    if (arr.length - i - 1 === 0) {
       animations.push([4, 0]);
     }
     for (var j = 0; j < arr.length - i - 1; j++) {
@@ -22,7 +22,7 @@ export function getBubbleSortAnimation(arr) {
       animations.push([3, [j, arr[j]]]);
       animations.push([3, [j + 1, arr[j + 1]]]);
       animations.push([2, [j, j + 1]]);
-      if (j + 1 == arr.length - i - 1) {
+      if (j + 1 === arr.length - i - 1) {
         animations.push([4, j + 1]);
       }
     }
@@ -48,7 +48,7 @@ export function getInsertionSortAnimation(inputArr) {
     }
 
     inputArr[j + 1] = current;
-    if (i == n - 1) animations.push([4, i]);
+    if (i === n - 1) animations.push([4, i]);
     animations.push([3, [j + 1, inputArr[j + 1]]]);
   }
   return animations;

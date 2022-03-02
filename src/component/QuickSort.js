@@ -2,16 +2,6 @@ import React from "react";
 import "./sortPage.css"
 
 // react-bootstrap components
-import {
-  Badge,
-  Button,
-  Card,
-  Navbar,
-  Nav,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
 
 function QuickSort() {
   return (

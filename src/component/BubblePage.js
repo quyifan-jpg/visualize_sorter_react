@@ -1,17 +1,7 @@
 import React from "react";
 import "./sortPage.css"
 // react-bootstrap components
-import {
-  Badge,
-  Button,
-  Card,
-  Navbar,
-  Nav,
-  Table,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
+
 
 function BubbleSort() {
   return (

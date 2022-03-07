@@ -8,6 +8,9 @@ import {getSelectionSortAnimation} from '../sortinalgorithms/selectionSort.js'
 import './SortingVisualizer.css';
 import { Button, Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ReactSlider from 'react-slider'
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
 //global variable to control the speed of the animation
 //for MERGE sort
 const ANIMATION_SPEED_MS = 0.5;
@@ -17,7 +20,8 @@ const NUMBER_OF_ARRAY_BARS = 240;
 const PRIMARY_COLOR = 'turquoise';
 //the color of the array bar that is being compared throughout the sort
 const SECONDARY_COLOR = 'red';
-
+const MIN = 1;
+const MAX = 10
 //the main function of the react app
 export default class SortingVisualizer extends React.Component {
     //sorting constructor:
@@ -277,6 +281,10 @@ export default class SortingVisualizer extends React.Component {
 
     }//end of bubble sort implementation
 
+    speedchange(){
+      var a = document.getElementById("slider1")
+      console.log(a)
+    }
     //function to test all sorting algorithm for debugging
     testSortingAlgorithms()
     {
@@ -295,8 +303,6 @@ export default class SortingVisualizer extends React.Component {
         //testing the sorting algorithm: 
         const jsSortingBuiltIn = array.slice().sort((a,b) => a - b); //java built-in sorting function
         const selectionSort = getSelectionSortAnimation(array.slice());
-        
-
         console.log(checkArrayEqual(jsSortingBuiltIn, selectionSort));
         
       }
@@ -320,7 +326,27 @@ export default class SortingVisualizer extends React.Component {
             <Button id="button6" onClick={() => this.selectionSortImpl()}>Selection Sort</Button>
             {/* <Button id="button7" onClick={()=>{this.setState({terminate:true})}}>terminate</Button> */}
           </div>
-      
+          <div className="sliderContainer">
+          
+          <span>speed</span>
+          <Slider className = "slider"
+          min={MIN} max={MAX} defaultValue={5}
+          ariaValueTextFormatterForHandle={
+            (value)=>{if(this.state.animation_speed !== (9-value)){
+              this.setState({animation_speed:(9-value)});
+              console.log(10-value)
+              console.log(this.state.animation_speed)
+            }}}
+          ></Slider>
+          </div>
+          <div className="sliderContainer">
+          
+          <span>number</span>
+          <Slider className = "slider"
+          min={MIN} max={MAX}
+           ></Slider>
+          </div>
+          <p></p>
           {array.map((value, idx) => (
             <div className="array-bar" key={idx}
               style={{

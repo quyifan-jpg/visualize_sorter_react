@@ -84,9 +84,8 @@ export default class SortingVisualizer extends React.Component {
       document.getElementById("button4").disabled = true
       document.getElementById("button5").disabled = true
       document.getElementById("button6").disabled = true
-      document.getElementById("slider1").disabled = true
-      document.getElementById("slider2").disabled = true
-
+      // document.getElementById("slider1").disabled = true
+      // document.getElementById("slider2").disabled = true
     }
     enableafterRunning(i){
             document.getElementById("button1").disabled = false
@@ -95,10 +94,8 @@ export default class SortingVisualizer extends React.Component {
             document.getElementById("button4").disabled = false
             document.getElementById("button5").disabled = false
             document.getElementById("button6").disabled = false
-            document.getElementById("slider1").disabled = true
-            document.getElementById("slider2").disabled = true
-
-            
+            // document.getElementById("slider1").disabled = false
+            // document.getElementById("slider2").disabled = false            
       }
 
     //sorting alorithms:

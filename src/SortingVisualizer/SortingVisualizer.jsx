@@ -84,6 +84,9 @@ export default class SortingVisualizer extends React.Component {
       document.getElementById("button4").disabled = true
       document.getElementById("button5").disabled = true
       document.getElementById("button6").disabled = true
+      document.getElementById("slider1").disabled = true
+      document.getElementById("slider2").disabled = true
+
     }
     enableafterRunning(i){
             document.getElementById("button1").disabled = false
@@ -92,6 +95,9 @@ export default class SortingVisualizer extends React.Component {
             document.getElementById("button4").disabled = false
             document.getElementById("button5").disabled = false
             document.getElementById("button6").disabled = false
+            document.getElementById("slider1").disabled = true
+            document.getElementById("slider2").disabled = true
+
             
       }
 
@@ -326,7 +332,7 @@ export default class SortingVisualizer extends React.Component {
           <div className="sliderContainer">
           
           <span>speed</span>
-          <Slider className = "slider"
+          <Slider className = "slider" id = "slider1"
           min={MIN} max={MAX} defaultValue={5}
           ariaValueTextFormatterForHandle={
             (value)=>{if(this.state.animation_speed !== (9-value)){
@@ -338,7 +344,7 @@ export default class SortingVisualizer extends React.Component {
           <div className="sliderContainer">
           
           <span>number</span>
-          <Slider className = "slider"
+          <Slider className = "slider" id = "slider2"
           min={1} max={3} defaultValue={3}
           ariaValueTextFormatterForHandle={
             (value)=>{if(this.state.number_bar !== value*75){

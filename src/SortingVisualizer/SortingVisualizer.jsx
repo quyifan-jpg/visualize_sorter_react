@@ -15,7 +15,7 @@ import 'rc-slider/assets/index.css';
 //for MERGE sort
 const ANIMATION_SPEED_MS = 0.5;
 //number of array bars being displayed
-const NUMBER_OF_ARRAY_BARS = 240; 
+const NUMBER_OF_ARRAY_BARS = 225; 
 //main color of the array bars:
 const PRIMARY_COLOR = 'turquoise';
 //the color of the array bar that is being compared throughout the sort
@@ -30,6 +30,7 @@ export default class SortingVisualizer extends React.Component {
   
       this.state = {
         terminate: false,
+        array_len: 3,
         number_bar : NUMBER_OF_ARRAY_BARS,
         animation_speed : ANIMATION_SPEED_MS,
         array: [],  //main array that would print out the element to be sorted.
@@ -52,8 +53,31 @@ export default class SortingVisualizer extends React.Component {
         }
         this.setState({array});
     }
+    resetArray22(){
+      const array = [];
+
+        for(let i = 0; i <=  this.state.number_bar; i++)
+        {
+            array.push(randomIntGeneration(5, 670));
+        }
+        this.setState({array});
+        console.log(this.state.number_bar)
+      const bars = document.getElementsByClassName("array-bar")
+      var stylewidth;
+      console.log(this.state.number_bar)
+      if (this.state.number_bar==75){
+        stylewidth = "8px"
+      } else if (this.state.number_bar == 150){
+        stylewidth = "4px"
+      } else{
+        stylewidth = "2px"
+      }
+      for (var i = 0; i < bars.length; i++){
+        bars[i].style.width = stylewidth
+        console.log(stylewidth)      }
+    }
+
     disableWhenRunning(){
-      console.log("yyeyyyyyes")
       document.getElementById("button1").disabled = true
       document.getElementById("button2").disabled = true
       document.getElementById("button3").disabled = true
@@ -68,7 +92,7 @@ export default class SortingVisualizer extends React.Component {
             document.getElementById("button4").disabled = false
             document.getElementById("button5").disabled = false
             document.getElementById("button6").disabled = false
-          
+            
       }
 
     //sorting alorithms:
@@ -281,33 +305,6 @@ export default class SortingVisualizer extends React.Component {
 
     }//end of bubble sort implementation
 
-    speedchange(){
-      var a = document.getElementById("slider1")
-      console.log(a)
-    }
-    //function to test all sorting algorithm for debugging
-    testSortingAlgorithms()
-    {
-      //the function will create 100 array with different length
-      for(var i = 0; i < 100; i++)
-      {
-        // create an array at each iteration: 
-        const array = []
-        //each array will have various length from 1 to 1000 
-        for(var j = 0; j < randomIntGeneration(1, 1000); j++)
-        {
-          //the array will push element into it until the for loop is exhausted. 
-          array.push(randomIntGeneration(0, 1000));
-        }//end for loop.
-
-        //testing the sorting algorithm: 
-        const jsSortingBuiltIn = array.slice().sort((a,b) => a - b); //java built-in sorting function
-        const selectionSort = getSelectionSortAnimation(array.slice());
-        console.log(checkArrayEqual(jsSortingBuiltIn, selectionSort));
-        
-      }
-    }
-
     render()
     {
         const {array} = this.state;
@@ -317,7 +314,7 @@ export default class SortingVisualizer extends React.Component {
           <div className="array-container">
             <h className='title'>Visualize Soring algorithm</h>
             <div className='button'>
-            <Button id="button1" onClick={() => this.resetArray()}>Generate New Array</Button>
+            <Button id="button1" onClick={() => this.resetArray22()}>Generate New Array</Button>
             <Button id="button2" onClick={() => this.mergeSortImpl()}>Merge Sort</Button>
             <Button id="button3" onClick={() => this.quickSortImpl()}>Quick Sort</Button>
             {/* <button onClick={() => this.heapSortImpl()}>Heap Sort</button> */}
@@ -334,8 +331,7 @@ export default class SortingVisualizer extends React.Component {
           ariaValueTextFormatterForHandle={
             (value)=>{if(this.state.animation_speed !== (9-value)){
               this.setState({animation_speed:(9-value)});
-              console.log(10-value)
-              console.log(this.state.animation_speed)
+              
             }}}
           ></Slider>
           </div>
@@ -343,7 +339,14 @@ export default class SortingVisualizer extends React.Component {
           
           <span>number</span>
           <Slider className = "slider"
-          min={MIN} max={MAX}
+          min={1} max={3} defaultValue={3}
+          ariaValueTextFormatterForHandle={
+            (value)=>{if(this.state.number_bar !== value*75){
+              console.log(value)
+              this.setState({number_bar: value*75
+              }, ()=>{this.resetArray22()});
+              
+            }}}
            ></Slider>
           </div>
           <p></p>
@@ -367,26 +370,3 @@ function randomIntGeneration(min, max)
 {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
-//Function to test if two array of elements equal to each other
-function checkArrayEqual(arr1, arr2)
-{
-  //if the two arrays are not equal to each other in length, then they are not equal.
-  if (arr1.length !== arr2.length)
-  {
-    return false;
-  }
-
-  // looping through each character and check if they are both equals
-  for (let i=0; i < arr1.length; i++)
-  {
-    if (arr1[i] !== arr2[i])
-    {
-      //array are equals
-      return false;
-      
-    }
-
-  }
-  return true;
-} //end of program

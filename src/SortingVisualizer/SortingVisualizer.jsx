@@ -34,6 +34,7 @@ export default class SortingVisualizer extends React.Component {
         array_len: 3,
         number_bar : NUMBER_OF_ARRAY_BARS,
         animation_speed : ANIMATION_SPEED_MS,
+        enable:false,
         array: [],  //main array that would print out the element to be sorted.
       };
     }
@@ -85,6 +86,7 @@ export default class SortingVisualizer extends React.Component {
       document.getElementById("button4").disabled = true
       document.getElementById("button5").disabled = true
       document.getElementById("button6").disabled = true
+      this.setState({enable:true})
       // document.getElementById("slider1").disabled = true
       // document.getElementById("slider2").disabled = true
     }
@@ -95,6 +97,7 @@ export default class SortingVisualizer extends React.Component {
             document.getElementById("button4").disabled = false
             document.getElementById("button5").disabled = false
             document.getElementById("button6").disabled = false
+            this.setState({enable:false})
             // document.getElementById("slider1").disabled = false
             // document.getElementById("slider2").disabled = false            
       }
@@ -116,8 +119,7 @@ export default class SortingVisualizer extends React.Component {
         const arrayBar = document.getElementsByClassName('array-bar');
         const isColorChange = i % 3 !== 2; //NEED TO RESEARCH MORE ABOUT THIS
         
-        if (i == animation.length - 1) {
-          console.log("possible")
+        if (i == animation.length - 2) {
           id = setTimeout(() => 
           { 
             try{
@@ -327,6 +329,16 @@ export default class SortingVisualizer extends React.Component {
         const arrayBar = document.getElementsByClassName('array-bar');
         const isColorChange = (i % 4 === 0) || (i % 4 === 1);
         //if the color changed:
+        if (i == animation.length - 2) {
+          console.log("possible")
+          id = setTimeout(() => 
+          { try {
+            this.enableafterRunning(i)
+          } catch{
+            this.clearqueue(id)
+          }
+          },i*this.state.animation_speed)
+        }
         if(isColorChange)
         {
           const [barOneIndex, barTwoIndex] = animation[i];
@@ -342,10 +354,7 @@ export default class SortingVisualizer extends React.Component {
               this.clearqueue(id)
             }
             }, i * this.state.animation_speed);
-          if(i == animation.length - 1){
-            this.enableafterRunning(i)
-            console.log(i)
-          }
+          
         }
         //if the color has not changed:
         else
@@ -376,10 +385,9 @@ export default class SortingVisualizer extends React.Component {
         return (
 
           <div className="array-container">
-            <h className='title'>Visualize Soring algorithm</h>
             <div className='button'>
             <Button id="button1" onClick={() => this.resetArray22()}>Generate New Array</Button>
-            <Button id="button2" onClick={() => this.mergeSortImpl()}>Merge Sort</Button>
+            <Button id="button2"  onClick={() => this.mergeSortImpl()}>Merge Sort</Button>
             <Button id="button3" onClick={() => this.quickSortImpl()}>Quick Sort</Button>
             {/* <button onClick={() => this.heapSortImpl()}>Heap Sort</button> */}
             <Button id="button4" onClick={() => this.bubbleSortImpl()}>Bubble Sort</Button>
@@ -391,7 +399,7 @@ export default class SortingVisualizer extends React.Component {
           
           <span>speed</span>
           <Slider className = "slider" id = "slider1"
-          min={MIN} max={MAX} defaultValue={5}
+          min={MIN} max={MAX} defaultValue={5} disabled={this.state.enable}
           ariaValueTextFormatterForHandle={
             (value)=>{if(this.state.animation_speed !== (9-value)){
               this.setState({animation_speed:(9-value)});
@@ -403,7 +411,7 @@ export default class SortingVisualizer extends React.Component {
           
           <span>number</span>
           <Slider className = "slider" id = "slider2"
-          min={1} max={3} defaultValue={3}
+          min={1} max={3} defaultValue={3} disabled={this.state.enable}
           ariaValueTextFormatterForHandle={
             (value)=>{if(this.state.number_bar !== value*75){
               console.log(value)

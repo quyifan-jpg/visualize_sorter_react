@@ -4,6 +4,22 @@
   height: auto;
 }
 
+#button2 {
+  margin-left: 20px;
+}
+#button3 {
+  margin-left: 20px;
+}
+#button4 {
+  margin-left: 20px;
+}
+#button5 {
+  margin-left: 20px;
+}
+#button6 {
+  margin-left: 20px;
+}
+
 .array-bar {
   width: 2px;
   display: inline-block;

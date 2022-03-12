@@ -1,10 +1,7 @@
 //Function to handle bubble sort:
 export function getBubblesSortAnimations(array) {
-    //variable to hold the animation list of the array
     const animation = [];
-    //make a copy of each element into another array
     const auxiliaryArray = array.slice();
-    //sort the array through bubble sort
     bubbleSort(animation, auxiliaryArray);
     return animation;
   }//end of bubble sort

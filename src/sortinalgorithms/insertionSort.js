@@ -1,12 +1,9 @@
-//The entire insertion sort implementation of this project
 export function getInsertionSortAnimation(array){
-    //animation array:
     let animation = [];
     let auxilaryArray = array.slice();
-    //implemnent insertion sort and animation
     insertionSort(auxilaryArray, animation);
     return animation;
-}//end of getInsertionSortAlgorithm()
+}
 
 
 function insertionSort(array, animation)

@@ -1,7 +1,6 @@
 import React from "react";
 import "./sortPage.css"
 
-// react-bootstrap components
 
 function QuickSort() {
   return (

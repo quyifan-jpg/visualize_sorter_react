@@ -7,6 +7,7 @@ import QuickSort from './component/QuickSort';
 import SelectionSort from './component/SelectionSort';
 import BubbleSort from './component/BubblePage';
 import Navbar from './component/sidebar';
+import InsertionSort from './component/InsertPage';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/QuickSort' exact element={<QuickSort/>} />
           <Route path='/SelectSort' exact element={<SelectionSort/>} />
           <Route path='/MergeSort' exact element={<MergeSort/>} />
+          <Route path='/InsertSort' exact element={<InsertionSort/>} />
 
         </Routes>
       </Router>

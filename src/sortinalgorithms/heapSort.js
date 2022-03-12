@@ -4,7 +4,6 @@ import * as numbers from 'numbers'
 //function to handle the Heap sort
 export function getHeapSortAnimation(array)
 {
-    //getting the array length: 
     let n = array.length;
 
     for(let i = math.floor(n / 2); i >=0; i-=1)
@@ -15,9 +14,8 @@ export function getHeapSortAnimation(array)
     //swap the largest element in the heap tree with the last element
     for(let i = n - 1; i > 0; i--)
     {
-        //swap last with largest
         swap(array, 0, i);
-        n--; //traverse the array backward
+        n--; 
 
         buildMaxHeap(array, 0)
     }

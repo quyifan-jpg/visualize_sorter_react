@@ -63,10 +63,8 @@ export default class SortingVisualizer extends React.Component {
             array.push(randomIntGeneration(5, 670));
         }
         this.setState({array});
-        console.log(this.state.number_bar)
       const bars = document.getElementsByClassName("array-bar")
       var stylewidth;
-      console.log(this.state.number_bar)
       if (this.state.number_bar==75){
         stylewidth = "8px"
       } else if (this.state.number_bar == 150){
@@ -74,9 +72,9 @@ export default class SortingVisualizer extends React.Component {
       } else{
         stylewidth = "2px"
       }
-      for (var i = 0; i < bars.length; i++){
+      for (var i = 0; i < bars.length ; i++){
         bars[i].style.width = stylewidth
-        console.log(stylewidth)      }
+      }
     }
 
     disableWhenRunning(){
@@ -112,6 +110,7 @@ export default class SortingVisualizer extends React.Component {
     mergeSortImpl()
     {
       this.disableWhenRunning()
+      this.resetArray22()
       //variable to intialize the animation for the current given array
       const animation = getMergeSortAnimations(this.state.array);
       for(let i = 0; i < animation.length; i++)
@@ -127,10 +126,8 @@ export default class SortingVisualizer extends React.Component {
           } catch{
             this.clearqueue(id)
           }
-
           },i*this.state.animation_speed)
         }
-       
         if(isColorChange)
         {
           const [barOneIndex, barTwoIndex] = animation[i];
@@ -158,12 +155,12 @@ export default class SortingVisualizer extends React.Component {
           }, i * this.state.animation_speed);
         }
       }
-    
     } //end of mergeSortImpl
     
     //Quick sort implementation:
     quickSortImpl() {
       this.disableWhenRunning()
+      this.resetArray22()
       const animations = getQuickSortAnimation(this.state.array);
       for (let i = 0; i < animations.length - 1; i++) {
           const arrayBars = document.getElementsByClassName('array-bar');
@@ -171,7 +168,6 @@ export default class SortingVisualizer extends React.Component {
           const isColorChange = (i % 6 === 0) || (i % 6 === 1);
           
           if (i == animations.length - 3) {
-            console.log("possible")
             id = setTimeout(() => 
             {
               try {
@@ -225,20 +221,18 @@ export default class SortingVisualizer extends React.Component {
   insertionSortImpl()
   {
     this.disableWhenRunning()
+    this.resetArray22()
+
     const animation = getInsertionSortAnimation(this.state.array);
     //looping though the animation array: 
     for(let i = 0; i < animation.length; i++)
     {
       if (i == animation.length - 2) {
-        console.log("possible")
         id = setTimeout(() => 
         { try {
           this.enableafterRunning(i)
-        } catch{
-          this.clearqueue(id)
-        }
-        },i*this.state.animation_speed)
-      }
+        } catch{this.clearqueue(id)
+        }},i*this.state.animation_speed)}
       const isColorChange = (animation[i][0] === "comparison1" || (animation[i][0] === "comparison2"));
       const arrayBars = document.getElementsByClassName("array-bar");
       if(isColorChange)
@@ -273,11 +267,12 @@ export default class SortingVisualizer extends React.Component {
 
   selectionSortImpl() {
     this.disableWhenRunning()
+    this.resetArray22()
+
     const animations = getSelectionSortAnimation(this.state.array);
     //loop through the animation array to determine the changes of the color
     for (let i = 0; i < animations.length; i++) {
       if (i == animations.length - 1) {
-        console.log("possible")
         id = setTimeout(() => 
         {
           try {
@@ -321,6 +316,8 @@ export default class SortingVisualizer extends React.Component {
     bubbleSortImpl()
     {
       this.disableWhenRunning();
+      this.resetArray22()
+
       //variable to hold the animation return value from the bubble sort function
       const animation = getBubblesSortAnimations(this.state.array);
       for(let i = 0; i < animation.length; i++)
@@ -330,7 +327,6 @@ export default class SortingVisualizer extends React.Component {
         const isColorChange = (i % 4 === 0) || (i % 4 === 1);
         //if the color changed:
         if (i == animation.length - 2) {
-          console.log("possible")
           id = setTimeout(() => 
           { try {
             this.enableafterRunning(i)
@@ -411,10 +407,9 @@ export default class SortingVisualizer extends React.Component {
           
           <span>number</span>
           <Slider className = "slider" id = "slider2"
-          min={1} max={3} defaultValue={3} disabled={this.state.enable}
+          min={1} max={3} defaultValue={1} disabled={this.state.enable}
           ariaValueTextFormatterForHandle={
             (value)=>{if(this.state.number_bar !== value*75){
-              console.log(value)
               this.setState({number_bar: value*75
               }, ()=>{this.resetArray22()});
               

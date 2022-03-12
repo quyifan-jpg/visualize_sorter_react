@@ -32,5 +32,11 @@ export const SidebarData = [
     path: '/SelectSort',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text'
+  },
+  {
+    title: 'InsertSort',
+    path: '/InsertSort',
+    icon: <IoIcons.IoIosPaper />,
+    cName: 'nav-text'
   }
 ];
